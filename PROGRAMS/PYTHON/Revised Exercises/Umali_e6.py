@@ -1,7 +1,8 @@
 '''
 
 @author Harold Umali
-Originally created: March 11, 2016
+
+Originally created: March 11 2015
 Revised in: August 27 2017
 Description: Calculator program; has basic arithmetic operations and other forms
     of operations which are modulo, exponentiation and factorial operations

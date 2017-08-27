@@ -1,6 +1,6 @@
 '''
 
-@author Harold S. Umali
+@author Harold Umali
 
 Originally Created in: Febuary 19 2015
 Revised in: August 26 2017

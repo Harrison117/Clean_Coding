@@ -1,7 +1,8 @@
 '''
 
-@author Harold S. Umali
-Originally Created in: March 18 2016
+@author Harold Umali
+
+Originally Created in: March 18 2015
 Revised in: August 27 2017
 Description: In n strings which is given by the user, checks whether string a, also
   given by the user, is a palindrome or not. Works in numeral, word, phrase or sentence

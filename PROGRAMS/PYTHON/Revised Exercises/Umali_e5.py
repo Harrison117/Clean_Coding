@@ -1,6 +1,8 @@
 '''
-@author Harold S. Umali
-Originally Created in: February 26, 2015
+
+@author Harold Umali
+
+Originally Created in: February 26 2015
 Revised in: August 26 2017
 Description: Given an input N from user, get the N number of prime numbers
     (not to be confused with getting prime numbers from 2 up to N)
