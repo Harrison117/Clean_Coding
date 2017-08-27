@@ -17,4 +17,6 @@ It's a good progress Maybe I could move on to C after I've done revising my code
 
 Then I could brush up my function writing skills again and read that chapter in the book =3
 
-On the other note: It's good to be back in python again
+On the other note: It's good to be back in python again!
+
+-Harry
