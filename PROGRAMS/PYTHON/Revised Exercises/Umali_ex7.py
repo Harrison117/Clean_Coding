@@ -61,7 +61,7 @@ def removeSpecialCase(wordGiven):
 
     return temporaryStringHolder
 
-def splitWord(wordGiven):
+def splitWord(wordGiven, middleIndex, endIndex):
     firstHalfWord = ""
     secondHalfWord = ""
 
@@ -92,44 +92,12 @@ for stringMember in stringList:
     ## new word will contain purely small letters only
     newWord = removeSpecialCase(stringMember)
 
-    endIndex = len(newWord) ## also the size of the word
-    middleIndex = int(endIndex/2)
+    wordSize = len(newWord) ## also the end index of the word
+    midIndex = int(wordSize/2)
 
-    firstHalfNewWord, secondHalfNewWord = splitWord(newWord)
+    firstHalfNewWord, secondHalfNewWord = splitWord(newWord, midIndex, wordSize)
 
     if firstHalfNewWord == reverseOf(secondHalfNewWord):
         print("{} is a palindrome.".format(stringMember))
     else:
         print("{} is not a palindrome.".format(stringMember))
-
-
-"""
-def isPalindrome():
-    i=0
-    if z==y[-(i)]: #checks the current letter and y[-i] letter if equal
-        i=i+1 #index update
-        return True
-    return False
-
-l=[]
-b="" #stores a word
-n=int(input("Enter number of strings: "))
-for x in range(0,n):
-    a=input("Enter string: ")
-    b=str.lower(a) #stores a to b to be lower-cased
-    l.append(b)
-    #check list
-    #print(l)
-#########################################################################################
-
-for y in l: #y gets elements in l
-    for z in y: #z gets the characters of element y
-        if z=="," or z=="." or z==" ":
-            continue
-            #skips the special characters
-        p=isPalindrome() #initiate isPalindrome function
-    if p:
-        print(y,"is a palindrome")
-    else:
-        print(y,"is not a palindrome")
-"""
