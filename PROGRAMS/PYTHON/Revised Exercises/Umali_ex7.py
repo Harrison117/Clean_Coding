@@ -1,22 +1,27 @@
 '''
 
-Harold S. Umali
-March 18. 2016
+@author Harold S. Umali
+Originally Created in: March 18 2016
+Revised in: August 27 2017
 Description: In n strings which is given by the user, checks whether string a, also
   given by the user, is a palindrome or not. Works in numeral, word, phrase or sentence
   level
 
-  PROCEDURE:
-    - ask for word/s
-    - get word/s
-    - remove special cases:
-        - special characters
-        - spaces
-        - capital letters
-    - split word
-    - reverse the last half
-    - compare
-    - repeat
+PROCEDURE:
+- ask for word/s
+- get word/s
+- remove special cases:
+    - special characters
+    - spaces
+    - capital letters
+- split word
+- reverse the last half
+- compare
+- repeat
+
+    UPDATED (08/27):
+        - separated some string manipulation methods into functions
+        - again, improve readability
 
 '''
 CAPITAL_TO_SMALL_LETTER_INCREMENT = 32
