@@ -1,0 +1,20 @@
+
+Well..... So far, so good!
+
+The moment I finished a chapter of "Clean Code", it really left me thinking about what I have done
+  to my old codes back in my freshman CS classes. Imagine the horror in seeing my old, near-unreadable
+  codes. Then something sparked in me; what if I make the programs again but this time, cleaner?
+
+Well, here it is :D
+
+I revised 4 programs so far in an effort to make my coding readable (and hopefully cleaner than the
+  old code, if not the cleanest code I've made). I've gotta admit; it's so damn hard to name variables.
+  At least I practiced a little during the time I was programming in C (these programs here are
+  programmed in Python though).
+
+It's a good progress Maybe I could move on to C after I've done revising my codes about file
+  manipulation in Python.
+
+Then I could brush up my function writing skills again and read that chapter in the book =3
+
+On the other note: It's good to be back in python again
