@@ -20,6 +20,11 @@ Description: In n strings which is given by the user, checks whether string a, a
 
 '''
 CAPITAL_TO_SMALL_LETTER_INCREMENT = 32
+ASCII_TO_INTEGER_DECREMENT = 48
+
+## ascii values of integers ranges from 48 to 57
+NUMBER_0 = 48
+NUMBER_9 = 57
 
 ## ascii values of capital letters ranges from 65 to 90
 CAPITAL_A = 65
@@ -33,7 +38,6 @@ START_INDEX = 0
 EVEN_LENGTH = 0
 
 def removeSpecialCase(wordGiven):
-
     temporaryStringHolder = ""
 
     for character in wordGiven:
@@ -46,7 +50,7 @@ def removeSpecialCase(wordGiven):
             continue
 
         ## checks ascii value of the character if it is a small letter
-        elif ord(character) >= SMALL_a and ord(character) <= SMALL_z:
+        elif ord(character) >= SMALL_a and ord(character) <= SMALL_z or ord(character) >= NUMBER_0 and ord(character) <= NUMBER_9:
 
             ## add the current character to char
             temporaryStringHolder += character
@@ -61,26 +65,43 @@ def splitWord(wordGiven):
     firstHalfWord = ""
     secondHalfWord = ""
 
-    if len(word) % 2 == EVEN_LENGTH:
+    if len(wordGiven) % 2 == EVEN_LENGTH:
         ## means get word from the first to the middle letters
-        firstHalfWord = word[START_INDEX:middleIndex]
+        firstHalfWord = wordGiven[START_INDEX:middleIndex]
     else:
         ## means get word from the first to the middle letters
-        firstHalfWord = word[START_INDEX:middleIndex+1]
+        ##  Note: it wont include the middle character because it is equal to itself
+        firstHalfWord = wordGiven[START_INDEX:middleIndex+1]
 
     ## means get word from the middle to the last letters
-    secondHalfWord = word[middleIndex:endIndex]
+    secondHalfWord = wordGiven[middleIndex:endIndex]
 
-    return
+    return firstHalfWord, secondHalfWord
 
-word = input("Enter word/phrase: ")
-endIndex = len(word) ## also the size of the word
-middleIndex = int(endIndex/2)
+def reverseOf(wordGiven):
+    ## returns 'string[begin:end:step]' format
+    return wordGiven[::-1]
 
-print(firstHalfWord,secondHalfWord)
+print("Enter numbers/words/phrases/sentences (separate in commas): ")
+wordInputs = input()
 
-for letter in word:
-    pass
+## assigns the given inputs separated from commas into the list
+stringList = wordInputs.split(',')
+
+for stringMember in stringList:
+    ## new word will contain purely small letters only
+    newWord = removeSpecialCase(stringMember)
+
+    endIndex = len(newWord) ## also the size of the word
+    middleIndex = int(endIndex/2)
+
+    firstHalfNewWord, secondHalfNewWord = splitWord(newWord)
+
+    if firstHalfNewWord == reverseOf(secondHalfNewWord):
+        print("{} is a palindrome.".format(stringMember))
+    else:
+        print("{} is not a palindrome.".format(stringMember))
+
 
 """
 def isPalindrome():
