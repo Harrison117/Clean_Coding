@@ -7,15 +7,10 @@ Description: A program that allows adding user-given Student Name and basic info
 
 '''
 
-def menu_(): #Docstring for Menu display
-    '''
-    [1] Add a Student
-    [2] View a Student
-    [3] View all Students
-    [4] Delete a Student
-    [5] Delete all Students
-    [6] Exit
-    '''
+CONST_OK = 'y'
+CONST_NULL = ''
+CONST_ENTER_LOGIN = 'PROMPT_LOGIN'
+CONST_DELETE_INFO = 'PROMPT_DELETE'
 
 def divider(): #Separator for easy reading of program
     for i in range(0,3):
@@ -25,102 +20,90 @@ def divider(): #Separator for easy reading of program
         print()
     return
 
-def cont():
-    if cont_==6:
-        return False
-    return True
+def userAuthentication(typeOfPrompt, passwordGiven):
 
-def operations(operation,all_info): #all_info is the student record dictionary passed throughout the functions
-    if cont_==1:
-        addStudent(all_info)
-    elif cont_==2:
-        for a in student_record.keys(): #Displays key list for convenience
-            print(a)
-        find=input("Enter name: ")
-        viewStudent(all_info,find)
-    elif cont_==3:
-        viewAllStudent(all_info)
-    elif cont_==4:
-        for a in student_record.keys(): #Same as viewing a student list (in key form)
-            print(a)
-        find=input("Enter name: ")
-        deleteStudent(all_info,find)
-    elif cont_==5:
-        deleteAllStudent(all_info)
+    if typeOfPrompt == CONST_ENTER_LOGIN:
+        username = input("Enter Username: ")
+        password = input("Enter password: ")
+        return username, password
 
-def addStudent(info): #Adds student name and info
-    divider()
-    name_=input("Enter Name: ")
-    age_=input("Enter Age: ")
-    deg_course=input("Enter Degree Course: ")
-    gwa_=input("Enter GWA: ")
-    student_record[name_]={"Age":age_,"Degree Course":deg_course,"GWA":gwa_} #This format will be the value of given name
-    divider()
-    for a,b in student_record.items(): #Updated dictionary
-        print(a,b)
+    elif typeOfPrompt == CONST_DELETE_INFO:
+        password = input("Enter password to delete: ")
+        if password == passwordGiven:
+            return CONST_OK
+        else:
+            return CONST_NULL
 
-def viewStudent(info,student_name):
-    if student_name in student_record: #Checks validity of name in dictionary(student record); prints if it exists
-        divider()
-        print(student_name)
-        print("Age: ",student_record[student_name]['Age'])
-        print("Degree Course: ",student_record[student_name]['Degree Course'])
-        print("GWA: ",student_record[student_name]['GWA'])
-        divider()
-        input("Press enter to continue...")
+def addStudentInformation(informationRecord):
+    studentName = input("Enter Student Name: ")
+    studentNickname = input("Enter Student Nickname: ")
+    studentNumber = input("Enter Student Number: ")
+    studentClassification = input("Enter Student Classification: ")
+    studentCourse = input("Enter Degree Course: ")
+    studentCollege = input("Enter Attending College: ")
+    studentAge = int(input("Enter Student Age: "))
+    studentGrade = int(input("Enter Recent Grade: "))
+
+    informationRecord[studentName] = {
+        'Nickname':studentNickname,
+        'Student Number':studentNumber,
+        'Classification':studentClassification,
+        'Course':studentCourse,
+        'College':studentCollege,
+        'Age':studentAge,
+        'GWA':studentGrade
+    }
+
+    return informationRecord
+
+def viewStudentInformation(informationRecord):
+
+    nameSearch = input("Search name: ")
+    if nameSearch in informationRecord:
+        print("Student Name: {}".format(studentName))
+
+        for attribute, value in studentName.items():
+            print("{}: {}".format(attribute, value))
+
     else:
-        print(student_record.pop(student_name,"Name does not exist...")) #Always prints "Name does not exist" if name does not exist
-        input("Press enter to continue...")
+        print("Record of {} not found...".format(nameSearch))
 
-def viewAllStudent(info):
-    divider()
-    for a,b in student_record.items():
-        print(a,b)
-    divider()
-    input("Press enter to continue...")
+    return
 
-def deleteStudent(info,student_name):
-    if student_name in student_record:
+def viewAllStudentInformation(informationRecord):
+    for studentName, studentDescription in informationRecord.items():
         divider()
-        print("Are you sure you want to delete",student_name,"and its information?") #Notification
-        n=int(input("[1] Yes [Any key] No :  "))
-        if n==1:
-            del student_record[student_name]
-            divider()
-            print("Entry cleared!")
-            for a,b in student_record.items(): #Updated dictionary
-                print(a,b)
-            divider()
-            input("Press enter to continue...")
+        print("Student Name: {}".format(studentName))
+
+        for attribute, value in studentDescription.items():
+            print("{}: {}".format(attribute, value))
+
+    return
+
+def deleteStudentInformation(informationRecord):
+    nameSearch = input("Enter name: ")
+
+    if nameSearch in informationRecord:
+        print("Are you sure you want to delete the records of {}?".format(nameSearch))
+        permission = userAuthentication('PROMPT_DELETE')
+
+        if permission == CONST_OK:
+            del informationRecord[nameSearch]
+        else:
+            print("Authentication failed...")
+
+    return
+
+def clearStudentRecords(informationRecord):
+    print("Are you sure you want to delete all the records?")
+    permission = userAuthentication('PROMPT_DELETE')
+
+    if permission == CONST_OK:
+        informationRecord.clear()
+        print("DELETE SUCCESSFUL...")
     else:
-        divider()
-        print(student_record.pop(student_name,"Name does not exist...")) #Always prints "Name does not exist" if name does not exist
-        input("Press enter to continue...")
+        print("Authentication failed...")
 
-def deleteAllStudent(info):
-    divider()
-    print("Are you sure you want to delete all the the names and their info?") #Notification
-    n=int(input("[1] Yes [Any Key] No :  "))
-    if n==1:
-        student_record.clear() #Clears the rest of the records in the dictionary
-        divider()
-        print(info) #Updated empty dictionary
-        print("Entries cleared!")
-        divider()
-        input("Press enter to continue...")
+    return
 
-student_record={}
-P=True
-while P:
-    divider()
-    print(menu_.__doc__)
-    divider()
-    cont_=int(input("Operation: "))
-    operations(cont_,student_record)
-    c=cont()
-    if c:
-        continue
-    else:
-        divider()
-        input("Goodbye, see you again!")
-        break
+studentInformationRecord={}
