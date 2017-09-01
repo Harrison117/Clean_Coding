@@ -1,9 +1,13 @@
 '''
 
-Harold S. Umali
-April 2, 2015
-Description: A program that allows adding user-given Student Name and basic information, viewing of student's information
- and deleting a user-given name and its Information using dictionaries
+@author Harold S. Umali
+Originally created in: April 2 2015
+Revised in: August 30 2017
+Description: A program that allows adding user-given Student Name and basic information, viewing of student's
+    information and deleting a user-given name and its Information using dictionaries
+
+    UPDATE(08/30):
+        
 
 '''
 
@@ -101,9 +105,9 @@ def clearStudentRecords(informationRecord):
     if permission == CONST_OK:
         informationRecord.clear()
         print("DELETE SUCCESSFUL...")
-    else:
-        print("Authentication failed...")
 
     return
 
 studentInformationRecord={}
+
+stateOfProgram = True
